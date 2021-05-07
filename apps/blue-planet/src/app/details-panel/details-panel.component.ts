@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { MenuItem } from 'primeng/api'
 
 @Component({
   selector: 'blue-planet-details-panel',

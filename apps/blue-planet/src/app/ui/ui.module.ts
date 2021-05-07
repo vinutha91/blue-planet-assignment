@@ -1,10 +1,12 @@
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { NgModule } from '@angular/core';
+import { TabMenuModule } from 'primeng/tabmenu';
 
 const PRIME_NG_MODULES = [
   ButtonModule,
-  DropdownModule
+  DropdownModule,
+  TabMenuModule
 ];
 
 @NgModule({
