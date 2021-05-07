@@ -3,4 +3,16 @@
   flex-basis: 5rem;
   align-items: center;
   border: 1px solid green;
+  padding: 0 1rem;
+}
+
+.header {
+  &--logo {
+    height: 3rem;
+  }
+
+  &--title {
+    margin: 1rem;
+    font-size: 2rem;
+  }
 }
