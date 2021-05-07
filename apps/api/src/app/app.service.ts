@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { Message } from '@blue-planet-assignment/api-interfaces';
+import { Observable, of } from 'rxjs';
+import { ALARMS_MOCK } from './app.mock';
 
 @Injectable()
 export class AppService {
-  getData(): Message {
-    return { message: 'Welcome to api!' };
+  getAlarms(): Observable<any> {
+    return of(ALARMS_MOCK);
   }
 }

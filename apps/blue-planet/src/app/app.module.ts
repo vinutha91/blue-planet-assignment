@@ -8,9 +8,10 @@ import { HeaderComponent } from './header/header.component';
 import { ActionBarComponent } from './action-bar/action-bar.component';
 import { UiModule } from './ui/ui.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DetailsPanelComponent } from './details-panel/details-panel.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, ActionBarComponent],
+  declarations: [AppComponent, HeaderComponent, ActionBarComponent, DetailsPanelComponent],
   imports: [BrowserModule, BrowserAnimationsModule, HttpClientModule, ReactiveFormsModule, UiModule],
   providers: [],
   bootstrap: [AppComponent],

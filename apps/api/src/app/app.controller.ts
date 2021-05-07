@@ -1,15 +1,14 @@
 import { Controller, Get } from '@nestjs/common';
 
-import { Message } from '@blue-planet-assignment/api-interfaces';
-
 import { AppService } from './app.service';
+import { Observable } from 'rxjs';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) { }
 
-  @Get('hello')
-  getData(): Message {
-    return this.appService.getData();
+  @Get('alarms')
+  getAlarms(): Observable<any> {
+    return this.appService.getAlarms();
   }
 }
