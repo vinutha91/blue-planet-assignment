@@ -1,9 +1,13 @@
+@import '../../scss/variables';
+
 :host {
   display: flex;
   flex-basis: 5rem;
   align-items: center;
   border: 1px solid green;
   padding: 0 1rem;
+  flex-flow: row;
+  background: $primary-blue;
 }
 
 .header {
@@ -14,5 +18,43 @@
   &--title {
     margin: 1rem;
     font-size: 2rem;
+  }
+
+  &--greeting {
+    font-size: 1.5rem;
+    margin: 0 1rem 0 auto;
+  }
+
+  &--notification {
+    margin: 0 1rem 0 0;
+
+    &--bell {
+      font-size: 1.5rem;
+    }
+  }
+
+  &--user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.2rem solid $logo-theme-blue;
+    border-radius: 50%;
+    background-color: $primary-gray;
+    height: 3rem;
+    width: 3rem;
+    margin: 0 1rem 0 0;
+
+    &--avatar {
+      font-size: 1.5rem;
+    }
+  }
+
+  &--logout {
+    font-size: 1.5rem;
+
+    &__enabled {
+      color: $logo-theme-blue;
+      cursor: pointer;
+    }
   }
 }
