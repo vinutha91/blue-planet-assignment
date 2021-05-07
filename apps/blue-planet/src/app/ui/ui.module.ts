@@ -1,8 +1,10 @@
 import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
 import { NgModule } from '@angular/core';
 
 const PRIME_NG_MODULES = [
-  ButtonModule
+  ButtonModule,
+  DropdownModule
 ];
 
 @NgModule({
