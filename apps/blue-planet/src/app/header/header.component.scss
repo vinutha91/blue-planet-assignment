@@ -1,3 +1,7 @@
 :host {
-  display: block;
+  display: flex;
+  height: 5rem;
+  flex: 1;
+  align-items: center;
+  border: 1px solid green;
 }
