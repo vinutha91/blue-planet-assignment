@@ -1,1 +1,16 @@
+@import './scss/variables';
+
 /* You can add global styles to this file, and also import other style files */
+html {
+  font-size: $base-font-size;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
