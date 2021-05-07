@@ -9,5 +9,10 @@ import { Message } from '@blue-planet-assignment/api-interfaces';
 })
 export class AppComponent {
   hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+  menuOptions = [
+    { name: 'Option 1', code: 'option_1' },
+    { name: 'Option 2', code: 'option_2' },
+    { name: 'Option 3', code: 'option_3' }
+  ];
+  constructor(private http: HttpClient) { }
 }

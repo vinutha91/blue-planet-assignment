@@ -1,1 +1,8 @@
-<button pButton type="button" label="Save" icon="pi pi-check"></button>
+<button pButton type="button" label="Save" icon="pi pi-home"></button>
+<div [formGroup]="actionBarForm" class="action-bar--menu">
+  <label class="action-bar--menu--label">Menu: </label>
+  <p-dropdown placeholder="Select..." class="p-component" [options]="menuOptions" formControlName="selectedOption"
+    optionLabel="name">
+  </p-dropdown>
+</div>
+<button pButton type="button" label="Back" icon="pi pi-arrow-left" class="p-button-danger"></button>

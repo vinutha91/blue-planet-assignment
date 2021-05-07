@@ -1,4 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { MenuOption } from '@blue-planet-assignment/api-interfaces';
 
 @Component({
   selector: 'blue-planet-action-bar',
@@ -7,6 +9,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ActionBarComponent implements OnInit {
+  @Input() menuOptions: MenuOption[];
+  actionBarForm: FormGroup = new FormGroup({
+    selectedOption: new FormControl('')
+  });
 
   constructor() { }
 
