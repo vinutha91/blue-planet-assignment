@@ -1,3 +1,5 @@
+@import '../../scss/variables';
+
 :host {
   display: flex;
   flex: 1;
@@ -5,4 +7,69 @@
   align-self: stretch;
   padding: 0 1rem;
   border: 1px solid red;
+}
+
+tr {
+  border-bottom: 0.2rem solid $primary-gray;
+
+  &:hover {
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.1s ease-out;
+  }
+}
+
+th.header.col {
+  color: $primary-white;
+  background: $primary-dark-blue;
+}
+
+tr.critical {
+  color: $alarm-severity-critical;
+  background-color: $alarm-severity-critical-background;
+
+  &:hover {
+    color: $primary-white;
+    background-color: $alarm-severity-critical;
+  }
+}
+
+tr.major {
+  color: $alarm-severity-major;
+  background-color: $alarm-severity-major-background;
+
+  &:hover {
+    color: $primary-white;
+    background-color: $alarm-severity-major;
+  }
+}
+
+tr.minor {
+  color: $primary-black;
+  background-color: $alarm-severity-minor-background;
+
+  &:hover {
+    color: $primary-white;
+    background-color: $alarm-severity-minor;
+  }
+}
+
+tr.warning {
+  color: $primary-black;
+  background-color: $alarm-severity-warning-background;
+
+  &:hover {
+    color: $primary-white;
+    background-color: $alarm-severity-warning;
+  }
+}
+
+tr.undefined {
+  color: $primary-black;
+  background-color: $alarm-severity-undefined-background;
+
+  &:hover {
+    color: $primary-white;
+    background-color: $alarm-severity-undefined;
+  }
 }

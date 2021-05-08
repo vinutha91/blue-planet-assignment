@@ -13,6 +13,8 @@ export class DetailsPanelComponent implements OnInit {
   @Input() activeItem: TabMenuItem;
   @Output() onTabClick: EventEmitter<string> = new EventEmitter<string>();
   columns: AlarmColumn[];
+  selectedAlarm: Alarm;
+  selectedAlarms: Alarm[];
 
   constructor() { }
 

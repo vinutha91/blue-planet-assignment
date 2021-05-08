@@ -5,6 +5,19 @@ $primary-black: #000;
 $primary-white: #fff;
 $primary-gray: #c7c6c6;
 $primary-blue: #5b95ff;
+$primary-dark-blue: #00266d;
 
 $logo-theme-blue: #1a66b1;
 $logout-color: #013972;
+
+$alarm-severity-critical: #e71d1d;
+$alarm-severity-major: #ef8e00;
+$alarm-severity-minor: #ddd326;
+$alarm-severity-warning: #7d85b2;
+$alarm-severity-undefined: #99b4ba;
+
+$alarm-severity-critical-background: #ffb5b5;
+$alarm-severity-major-background: #ffe3b8;
+$alarm-severity-minor-background: #dfdcad;
+$alarm-severity-warning-background: #d3d8f3;
+$alarm-severity-undefined-background: #b9bcbd;

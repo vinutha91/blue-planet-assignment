@@ -1,15 +1,23 @@
 <h3>Alarm Views</h3>
 <p-tabMenu [model]="alarmsPayload.tabMenuItems" [activeItem]="activeItem"></p-tabMenu>
-<p-table [value]="alarmsPayload.alarms">
+<p-table [value]="alarmsPayload.alarms" [resizableColumns]="true" [(selection)]="selectedAlarms">
   <ng-template pTemplate="header">
     <tr>
-      <th *ngFor="let col of columns">
+      <th style="width: 5rem" class="header col">
+        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+      </th>
+      <th *ngFor="let col of columns" class="header col" pResizableColumn>
         {{col.header}}
       </th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-alarm>
-    <tr>
+    <tr [pSelectableRow]="alarm" [ngClass]="{'critical': alarm.severity === 'CRITICAL', 'major': alarm.severity === 'MAJOR', 'minor':
+      alarm.severity === 'MINOR', 'warning': alarm.severity === 'WARNING', 'undefined': alarm.severity !== 'CRITICAL' &&
+      alarm.severity !== 'MAJOR' && alarm.severity !== 'MINOR' && alarm.severity !== 'WARNING'}">
+      <td>
+        <p-tableCheckbox [value]="alarm"></p-tableCheckbox>
+      </td>
       <td>{{alarm.severity | titlecase }}</td>
       <td>{{alarm.description}}</td>
       <td>{{alarm.nodeType}}</td>
