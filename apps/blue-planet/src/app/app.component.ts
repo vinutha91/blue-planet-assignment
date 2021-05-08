@@ -3,6 +3,7 @@ import { AppService } from './services/app.service';
 import { MenuOption, TabMenuItem, Alarm } from '@blue-planet-assignment/api-interfaces';
 import { Observable } from 'rxjs';
 import { DEFAULT_FILTER } from './app.const';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'blue-planet-assignment-root',
@@ -33,6 +34,10 @@ export class AppComponent implements OnInit {
 
   backClick(): void {
     this.showPopup = true;
+  }
+
+  optionSelected(value: MenuItem): void {
+
   }
 
   private getMenuOptions(): MenuOption[] {

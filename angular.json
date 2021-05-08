@@ -61,10 +61,12 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [{
-                "replace": "apps/blue-planet/src/environments/environment.ts",
-                "with": "apps/blue-planet/src/environments/environment.prod.ts"
-              }],
+              "fileReplacements": [
+                {
+                  "replace": "apps/blue-planet/src/environments/environment.ts",
+                  "with": "apps/blue-planet/src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -72,7 +74,8 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [{
+              "budgets": [
+                {
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
@@ -168,10 +171,12 @@
               "optimization": true,
               "extractLicenses": true,
               "inspect": false,
-              "fileReplacements": [{
-                "replace": "apps/api/src/environments/environment.ts",
-                "with": "apps/api/src/environments/environment.prod.ts"
-              }]
+              "fileReplacements": [
+                {
+                  "replace": "apps/api/src/environments/environment.ts",
+                  "with": "apps/api/src/environments/environment.prod.ts"
+                }
+              ]
             }
           }
         },
@@ -206,6 +211,31 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
+          }
+        }
+      }
+    },
+    "confirm-dialog": {
+      "projectType": "library",
+      "root": "libs/confirm-dialog",
+      "sourceRoot": "libs/confirm-dialog/src",
+      "prefix": "blue-planet",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/confirm-dialog/src/**/*.ts",
+              "libs/confirm-dialog/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/confirm-dialog"],
+          "options": {
+            "jestConfig": "libs/confirm-dialog/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

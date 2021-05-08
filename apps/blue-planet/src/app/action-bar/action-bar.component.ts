@@ -12,6 +12,7 @@ export class ActionBarComponent {
   @Input() menuOptions: MenuOption[];
   @Output() onHomeClick: EventEmitter<void> = new EventEmitter();
   @Output() onBackClick: EventEmitter<void> = new EventEmitter();
+  @Output() onOptionSelected: EventEmitter<MenuOption> = new EventEmitter();
   actionBarForm: FormGroup = new FormGroup({
     selectedOption: new FormControl('')
   });
@@ -22,5 +23,9 @@ export class ActionBarComponent {
 
   backClick(): void {
     this.onBackClick.emit();
+  }
+
+  optionSelected($event): void {
+    this.onOptionSelected.emit($event.value);
   }
 }

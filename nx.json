@@ -1,36 +1,21 @@
 {
   "implicitDependencies": {
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
     ".eslintrc.json": "*"
   },
-  "affected": {
-    "defaultBase": "master"
-  },
+  "affected": { "defaultBase": "master" },
   "npmScope": "blue-planet-assignment",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
-      }
+      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
     }
   },
   "projects": {
-    "blue-planet": {
-      "tags": []
-    },
-    "blue-planet-e2e": {
-      "tags": [],
-      "implicitDependencies": ["blue-planet"]
-    },
-    "api": {
-      "tags": []
-    },
-    "api-interfaces": {
-      "tags": []
-    }
+    "blue-planet": { "tags": [] },
+    "blue-planet-e2e": { "tags": [], "implicitDependencies": ["blue-planet"] },
+    "api": { "tags": [] },
+    "api-interfaces": { "tags": [] },
+    "confirm-dialog": { "tags": [] }
   }
 }
