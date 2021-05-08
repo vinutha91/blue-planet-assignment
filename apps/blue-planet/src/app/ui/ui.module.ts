@@ -4,13 +4,15 @@ import { NgModule } from '@angular/core';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { TableModule } from 'primeng/table';
 import { BadgeModule } from 'primeng/badge';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 const PRIME_NG_MODULES = [
   ButtonModule,
   DropdownModule,
   TabMenuModule,
   TableModule,
-  BadgeModule
+  BadgeModule,
+  OverlayPanelModule
 ];
 
 @NgModule({

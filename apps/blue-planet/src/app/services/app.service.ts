@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Alarm, TabMenuItem } from '@blue-planet-assignment/api-interfaces';
 import { Observable } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { API_PATHS } from '../app.const';
 
@@ -16,7 +17,8 @@ export class AppService {
     return this.http.get(url).pipe(
       map((response: { alarms: Alarm[], tabMenuItems: TabMenuItem[] }) => {
         return response;
-      })
+      }),
+      shareReplay(1)
     );
   }
 }

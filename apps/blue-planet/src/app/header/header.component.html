@@ -2,8 +2,24 @@
 <label class="header--title">Blueplanet</label>
 <label class="header--greeting">Welcome, <strong>Vinutha!</strong></label>
 <div class="header--notification">
-  <i class="pi pi-bell header--notification--bell" pBadge [value]="(alarms$ | async).length || '0'"
-    severity="danger"></i>
+  <i class="pi pi-bell header--notification--bell" pBadge [value]="(alarms$ | async).length || '0'" severity="danger"
+    (click)="op.toggle($event)"></i>
+  <p-overlayPanel #op>
+    <ng-template pTemplate>
+      <ul *ngIf="(alarms$ | async).length > 0" class="notifications">
+        <li *ngFor="let alarm of (alarms$ | async)">
+          <span class="notifications--severity" [ngClass]="{
+            'notifications--severity__critical': alarm.severity === 'CRITICAL',
+            'notifications--severity__major': alarm.severity === 'MAJOR',
+            'notifications--severity__minor': alarm.severity === 'MINOR',
+            'notifications--severity__warning': alarm.severity === 'WARNING',
+            'notifications--severity__undefined': alarm.severity === 'UNDEFINED'
+          }">{{alarm.severity}}</span>
+          {{alarm.description}} - {{alarm.nodeType}}
+        </li>
+      </ul>
+    </ng-template>
+  </p-overlayPanel>
 </div>
 <div class="header--user">
   <i class="pi pi-user header--user--avatar"></i>
