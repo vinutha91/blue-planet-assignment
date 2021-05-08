@@ -18,7 +18,7 @@
       "@blue-planet-assignment/api-interfaces": [
         "libs/api-interfaces/src/index.ts"
       ],
-      "@blue-planet/confirm-dialog": ["libs/confirm-dialog/src/index.ts"]
+      "@blue-planet-assignment/confirm-dialog": ["libs/confirm-dialog/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -6,3 +6,8 @@ export const API_PATHS = {
 }
 
 export const DEFAULT_FILTER = 'ALARMS';
+
+export enum DialogSource {
+    MENU_OPTION = 'MENU_OPTION',
+    LOGOUT = 'LOGOUT'
+}

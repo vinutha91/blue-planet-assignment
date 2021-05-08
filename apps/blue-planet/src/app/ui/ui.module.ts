@@ -6,7 +6,6 @@ import { TableModule } from 'primeng/table';
 import { BadgeModule } from 'primeng/badge';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { DialogModule } from 'primeng/dialog';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 const PRIME_NG_MODULES = [
   ButtonModule,
@@ -15,8 +14,7 @@ const PRIME_NG_MODULES = [
   TableModule,
   BadgeModule,
   OverlayPanelModule,
-  DialogModule,
-  ConfirmDialogModule
+  DialogModule
 ];
 
 @NgModule({

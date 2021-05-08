@@ -10,10 +10,11 @@ import { UiModule } from './ui/ui.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailsPanelComponent } from './details-panel/details-panel.component';
 import { DateTransformPipe } from './pipes/date-transform.pipe';
+import { ConfirmDialogLibModule } from '@blue-planet-assignment/confirm-dialog';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, ActionBarComponent, DetailsPanelComponent, DateTransformPipe],
-  imports: [BrowserModule, BrowserAnimationsModule, HttpClientModule, ReactiveFormsModule, UiModule, FormsModule],
+  imports: [BrowserModule, BrowserAnimationsModule, HttpClientModule, ReactiveFormsModule, UiModule, FormsModule, ConfirmDialogLibModule],
   providers: [],
   bootstrap: [AppComponent],
 })
