@@ -12,9 +12,13 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-alarm>
-    <tr [pSelectableRow]="alarm" [ngClass]="{'critical': alarm.severity === 'CRITICAL', 'major': alarm.severity === 'MAJOR', 'minor':
-      alarm.severity === 'MINOR', 'warning': alarm.severity === 'WARNING', 'undefined': alarm.severity !== 'CRITICAL' &&
-      alarm.severity !== 'MAJOR' && alarm.severity !== 'MINOR' && alarm.severity !== 'WARNING'}">
+    <tr [pSelectableRow]="alarm" [ngClass]="{'critical': alarm.severity === 'CRITICAL' && activeItem.event !== 'CRITICAL', 'major': alarm.severity
+      === 'MAJOR' && activeItem.event !== 'MAJOR', 'minor':
+      alarm.severity === 'MINOR' && activeItem.event !== 'MINOR', 'warning': alarm.severity === 'WARNING' &&
+      activeItem.event !== 'WARNING', 'undefined':
+      alarm.severity !== 'CRITICAL' &&
+      alarm.severity !== 'MAJOR' && alarm.severity !== 'MINOR' && alarm.severity !== 'WARNING' && activeItem.event !==
+      'CRITICAL' && activeItem.event !== 'MAJOR' && activeItem.event !== 'MINOR' && activeItem.event !== 'WARNING'}">
       <td>
         <p-tableCheckbox [value]="alarm"></p-tableCheckbox>
       </td>
