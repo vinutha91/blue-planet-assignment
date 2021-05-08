@@ -6,7 +6,7 @@
     (click)="op.toggle($event)"></i>
   <p-overlayPanel #op>
     <ng-template pTemplate>
-      <ul *ngIf="(alarms$ | async).length > 0" class="notifications">
+      <ul *ngIf="(alarms$ | async).length > 0;else noNotificationsBlock" class="notifications">
         <li *ngFor="let alarm of (alarms$ | async)">
           <span class="notifications--severity" [ngClass]="{
             'notifications--severity__critical': alarm.severity === 'CRITICAL',
@@ -18,6 +18,11 @@
           {{alarm.description}} - {{alarm.nodeType}}
         </li>
       </ul>
+      <ng-template #noNotificationsBlock>
+        <p class="no-notifications">
+          <strong>You have 0 notifications.</strong>
+        </p>
+      </ng-template>
     </ng-template>
   </p-overlayPanel>
 </div>
