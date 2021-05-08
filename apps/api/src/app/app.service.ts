@@ -60,6 +60,12 @@ export class AppService {
         return 0;
       });
     }
+
+    return allAlarms.map((alarm) => {
+      return this.generateAlarm(alarm);
+    }).filter((alarm: Alarm) => {
+      return alarm.severity === filter;
+    });
   }
 
   private generateAlarm(alarm): Alarm {
