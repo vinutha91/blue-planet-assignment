@@ -2,7 +2,8 @@
 <label class="header--title">Blueplanet</label>
 <label class="header--greeting">Welcome, <strong>Vinutha!</strong></label>
 <div class="header--notification">
-  <i class="pi pi-bell header--notification--bell"></i>
+  <i class="pi pi-bell header--notification--bell" pBadge [value]="(alarms$ | async).length || '0'"
+    severity="danger"></i>
 </div>
 <div class="header--user">
   <i class="pi pi-user header--user--avatar"></i>

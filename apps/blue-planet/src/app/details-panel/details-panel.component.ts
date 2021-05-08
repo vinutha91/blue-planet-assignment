@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { AlarmsPayload, TabMenuItem, Alarm, AlarmColumn } from '@blue-planet-assignment/api-interfaces';
 import { MenuItem } from 'primeng/api'
+import { AlarmsService } from '../services/alarms.service';
 
 @Component({
   selector: 'blue-planet-details-panel',
@@ -15,8 +16,9 @@ export class DetailsPanelComponent implements OnInit {
   columns: AlarmColumn[];
   selectedAlarm: Alarm;
   selectedAlarms: Alarm[];
+  isAllRowsSelected = false;
 
-  constructor() { }
+  constructor(private alarmsService: AlarmsService) { }
 
   ngOnInit(): void {
     this.columns = this.generateTableColumns();
@@ -30,6 +32,23 @@ export class DetailsPanelComponent implements OnInit {
 
   getAlarmsByFilter(event): void {
     this.onTabClick.emit(event.item);
+  }
+
+  rowSelected(): void {
+    this.alarmsService.addAlarms(this.selectedAlarms);
+  }
+
+  rowUnselected(): void {
+    this.alarmsService.addAlarms(this.selectedAlarms);
+  }
+
+  allRowsSelected(): void {
+    this.isAllRowsSelected = !this.isAllRowsSelected;
+    if (this.isAllRowsSelected) {
+      this.alarmsService.addAlarms(this.alarmsPayload.alarms);
+    } else {
+      this.alarmsService.resetAlarms([]);
+    }
   }
 
   private generateTableColumns(): AlarmColumn[] {

@@ -1,6 +1,8 @@
 <h3>Alarm Views</h3>
 <p-tabMenu [model]="alarmsPayload.tabMenuItems" [activeItem]="activeItem"></p-tabMenu>
-<p-table [value]="alarmsPayload.alarms" [resizableColumns]="true" [(selection)]="selectedAlarms">
+<p-table [value]="alarmsPayload.alarms" (onRowSelect)="rowSelected()" (onRowUnselect)="rowUnselected()"
+  (onHeaderCheckboxToggle)="allRowsSelected()" [resizableColumns]="true" [(selection)]="selectedAlarms"
+  selectionMode="multiple">
   <ng-template pTemplate="header">
     <tr>
       <th style="width: 5rem" class="header col">
@@ -11,16 +13,17 @@
       </th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-alarm>
-    <tr [pSelectableRow]="alarm" [ngClass]="{'critical': alarm.severity === 'CRITICAL' && activeItem.event !== 'CRITICAL', 'major': alarm.severity
-      === 'MAJOR' && activeItem.event !== 'MAJOR', 'minor':
-      alarm.severity === 'MINOR' && activeItem.event !== 'MINOR', 'warning': alarm.severity === 'WARNING' &&
-      activeItem.event !== 'WARNING', 'undefined':
-      alarm.severity !== 'CRITICAL' &&
-      alarm.severity !== 'MAJOR' && alarm.severity !== 'MINOR' && alarm.severity !== 'WARNING' && activeItem.event !==
-      'CRITICAL' && activeItem.event !== 'MAJOR' && activeItem.event !== 'MINOR' && activeItem.event !== 'WARNING'}">
+  <ng-template pTemplate="body" let-alarm let-rowIndex="rowIndex">
+    <tr [pSelectableRow]="alarm"
+      [ngClass]="{
+        'critical': alarm.severity === 'CRITICAL' && activeItem.event !== 'CRITICAL', 
+        'major': alarm.severity === 'MAJOR' && activeItem.event !== 'MAJOR', 
+        'minor': alarm.severity === 'MINOR' && activeItem.event !== 'MINOR', 
+        'warning': alarm.severity === 'WARNING' && activeItem.event !== 'WARNING', 'undefined':
+        alarm.severity !== 'CRITICAL' && alarm.severity !== 'MAJOR' && alarm.severity !== 'MINOR' && alarm.severity !== 'WARNING' && 
+        activeItem.event !== 'CRITICAL' && activeItem.event !== 'MAJOR' && activeItem.event !== 'MINOR' && activeItem.event !== 'WARNING'}">
       <td>
-        <p-tableCheckbox [value]="alarm"></p-tableCheckbox>
+        <p-tableCheckbox [value]="alarm" [index]="rowIndex"></p-tableCheckbox>
       </td>
       <td>{{alarm.severity | titlecase }}</td>
       <td>{{alarm.description}}</td>

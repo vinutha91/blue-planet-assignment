@@ -28,6 +28,10 @@
   &--notification {
     margin: 0 1rem 0 0;
 
+    &:hover {
+      cursor: pointer;
+    }
+
     &--bell {
       font-size: 1.5rem;
     }
