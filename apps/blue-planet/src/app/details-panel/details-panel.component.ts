@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
-import { AlarmsPayload, TabMenuItem } from '@blue-planet-assignment/api-interfaces';
+import { AlarmsPayload, TabMenuItem, Alarm } from '@blue-planet-assignment/api-interfaces';
 import { MenuItem } from 'primeng/api'
 
 @Component({
@@ -9,8 +9,34 @@ import { MenuItem } from 'primeng/api'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DetailsPanelComponent implements OnInit {
-  @Input() alarms: { alarmsPayload: AlarmsPayload, tabMenuItems: TabMenuItem[] };
+  @Input() alarms: { alarms: Alarm[], tabMenuItems: TabMenuItem[] };
   activeItem: MenuItem;
+  cars = [
+    {
+      vin: 'abc',
+      year: '2001',
+      brand: 'hyundai',
+      color: 'red'
+    },
+    {
+      vin: 'abc',
+      year: '2001',
+      brand: 'hyundai',
+      color: 'red'
+    },
+    {
+      vin: 'abc',
+      year: '2001',
+      brand: 'hyundai',
+      color: 'red'
+    },
+    {
+      vin: 'abc',
+      year: '2001',
+      brand: 'hyundai',
+      color: 'red'
+    }
+  ]
 
   constructor() { }
 

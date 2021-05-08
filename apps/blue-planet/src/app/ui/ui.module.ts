@@ -2,11 +2,13 @@ import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { NgModule } from '@angular/core';
 import { TabMenuModule } from 'primeng/tabmenu';
+import { TableModule } from 'primeng/table';
 
 const PRIME_NG_MODULES = [
   ButtonModule,
   DropdownModule,
-  TabMenuModule
+  TabMenuModule,
+  TableModule
 ];
 
 @NgModule({
