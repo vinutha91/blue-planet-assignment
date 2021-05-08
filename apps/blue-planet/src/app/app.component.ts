@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from './services/app.service';
-import { AlarmsPayload, MenuOption } from '@blue-planet-assignment/api-interfaces';
+import { AlarmsPayload, MenuOption, TabMenuItem } from '@blue-planet-assignment/api-interfaces';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   menuOptions: MenuOption[];
-  alarms$: Observable<AlarmsPayload>
+  alarms$: Observable<{ alarmsPayload: AlarmsPayload, tabMenuItems: TabMenuItem[] }>
 
   constructor(private appService: AppService) { }
 
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     ]
   }
 
-  private getAlarms(): Observable<AlarmsPayload> {
+  private getAlarms(): Observable<{ alarmsPayload: AlarmsPayload, tabMenuItems: TabMenuItem[] }> {
     return this.appService.getAlarms();
   }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { AlarmsPayload, TabMenuItem } from '@blue-planet-assignment/api-interfaces';
 import { MenuItem } from 'primeng/api'
 
 @Component({
@@ -8,10 +9,19 @@ import { MenuItem } from 'primeng/api'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DetailsPanelComponent implements OnInit {
+  @Input() alarms: { alarmsPayload: AlarmsPayload, tabMenuItems: TabMenuItem[] };
+  activeItem: MenuItem;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.alarms.tabMenuItems.forEach((tabMenuItem: TabMenuItem) => {
+      tabMenuItem.command = this.onTabClick;
+    });
+    this.activeItem = this.alarms.tabMenuItems[0];
   }
 
+  onTabClick(event) {
+    console.log(event);
+  }
 }
