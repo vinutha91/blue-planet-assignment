@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MenuOption } from '@blue-planet-assignment/api-interfaces';
 
@@ -8,15 +8,19 @@ import { MenuOption } from '@blue-planet-assignment/api-interfaces';
   styleUrls: ['./action-bar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ActionBarComponent implements OnInit {
+export class ActionBarComponent {
   @Input() menuOptions: MenuOption[];
+  @Output() onHomeClick: EventEmitter<void> = new EventEmitter();
+  @Output() onBackClick: EventEmitter<void> = new EventEmitter();
   actionBarForm: FormGroup = new FormGroup({
     selectedOption: new FormControl('')
   });
 
-  constructor() { }
-
-  ngOnInit(): void {
+  homeClick(): void {
+    this.onHomeClick.emit();
   }
 
+  backClick(): void {
+    this.onBackClick.emit();
+  }
 }

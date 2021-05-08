@@ -1,6 +1,13 @@
 <blue-planet-header></blue-planet-header>
-<blue-planet-action-bar [menuOptions]="menuOptions"></blue-planet-action-bar>
+<blue-planet-action-bar [menuOptions]="menuOptions" (onHomeClick)="homeClick()" (onBackClick)="backClick()">
+</blue-planet-action-bar>
 <blue-planet-details-panel *ngIf="(alarms$ | async) as alarms" [activeItem]="activeItem" [alarmsPayload]="alarms"
   (onTabClick)="tabClick($event)">
 </blue-planet-details-panel>
 <!-- Add a loading spinner -->
+<p-dialog header="Title" [(visible)]="showPopup" [style]="{width: '50vw'}">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt lacus nec leo convallis vulputate. Phasellus
+  congue aliquet ipsum, rutrum ullamcorper justo condimentum a. Donec sagittis ullamcorper arcu, sed malesuada velit
+  lacinia non. Donec non massa condimentum erat mattis ultrices. Ut finibus augue quam, nec congue massa varius et.
+  Morbi consectetur diam nec enim rutrum pretium. Etiam malesuada varius elit sit amet tristique.
+</p-dialog>

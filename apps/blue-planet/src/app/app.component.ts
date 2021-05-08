@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   alarms$: Observable<{ alarms: Alarm[], tabMenuItems: TabMenuItem[] }>
   filter = DEFAULT_FILTER;
   activeItem: TabMenuItem;
+  showPopup = false;
   constructor(private appService: AppService) { }
 
   ngOnInit(): void {
@@ -24,6 +25,14 @@ export class AppComponent implements OnInit {
   tabClick(tab: TabMenuItem) {
     this.activeItem = tab;
     this.alarms$ = this.getAlarms(tab.event);
+  }
+
+  homeClick(): void {
+    this.showPopup = true;
+  }
+
+  backClick(): void {
+    this.showPopup = true;
   }
 
   private getMenuOptions(): MenuOption[] {
