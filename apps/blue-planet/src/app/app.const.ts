@@ -4,3 +4,5 @@ export const API_PATHS = {
         GET_ALARMS: 'alarms'
     }
 }
+
+export const DEFAULT_FILTER = 'ALARMS';

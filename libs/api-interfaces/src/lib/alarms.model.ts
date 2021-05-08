@@ -19,6 +19,11 @@ export interface Alarm {
     raiseTime: Date
 }
 
+export interface AlarmColumn {
+    field: string;
+    header: string
+}
+
 export enum AlarmState {
     INACTIVE = 'INACTIVE',
     ACTIVE = 'ACTIVE'

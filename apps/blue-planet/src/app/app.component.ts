@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from './services/app.service';
 import { MenuOption, TabMenuItem, Alarm } from '@blue-planet-assignment/api-interfaces';
 import { Observable } from 'rxjs';
+import { DEFAULT_FILTER } from './app.const';
 
 @Component({
   selector: 'blue-planet-assignment-root',
@@ -11,12 +12,18 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit {
   menuOptions: MenuOption[];
   alarms$: Observable<{ alarms: Alarm[], tabMenuItems: TabMenuItem[] }>
-
+  filter = DEFAULT_FILTER;
+  activeItem: TabMenuItem;
   constructor(private appService: AppService) { }
 
   ngOnInit(): void {
     this.menuOptions = this.getMenuOptions();
-    this.alarms$ = this.getAlarms();
+    this.alarms$ = this.getAlarms(this.filter);
+  }
+
+  tabClick(tab: TabMenuItem) {
+    this.activeItem = tab;
+    this.alarms$ = this.getAlarms(tab.event);
   }
 
   private getMenuOptions(): MenuOption[] {
@@ -27,7 +34,8 @@ export class AppComponent implements OnInit {
     ]
   }
 
-  private getAlarms(): Observable<{ alarms: Alarm[], tabMenuItems: TabMenuItem[] }> {
-    return this.appService.getAlarms();
+  private getAlarms(filter: string): Observable<{ alarms: Alarm[], tabMenuItems: TabMenuItem[] }> {
+    const alarmFiler = filter ?? 'ALARMS'
+    return this.appService.getAlarms(alarmFiler);
   }
 }

@@ -1,5 +1,6 @@
 <blue-planet-header></blue-planet-header>
 <blue-planet-action-bar [menuOptions]="menuOptions"></blue-planet-action-bar>
-<blue-planet-details-panel *ngIf="(alarms$ | async) as alarms" [alarms]="alarms">
+<blue-planet-details-panel *ngIf="(alarms$ | async) as alarms" [activeItem]="activeItem" [alarmsPayload]="alarms"
+  (onTabClick)="tabClick($event)">
 </blue-planet-details-panel>
 <!-- Add a loading spinner -->

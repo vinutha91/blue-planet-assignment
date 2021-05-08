@@ -11,8 +11,8 @@ import { API_PATHS } from '../app.const';
 export class AppService {
   constructor(private http: HttpClient) { }
 
-  getAlarms(): Observable<{ alarms: Alarm[], tabMenuItems: TabMenuItem[] }> {
-    const url = `${API_PATHS.BASE_PATH}${API_PATHS.ALARMS.GET_ALARMS}`;
+  getAlarms(filter: string): Observable<{ alarms: Alarm[], tabMenuItems: TabMenuItem[] }> {
+    const url = `${API_PATHS.BASE_PATH}${API_PATHS.ALARMS.GET_ALARMS}?filter=${filter}`;
     return this.http.get(url).pipe(
       map((response: { alarms: Alarm[], tabMenuItems: TabMenuItem[] }) => {
         return response;

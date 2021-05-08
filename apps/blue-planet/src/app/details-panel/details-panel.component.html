@@ -1,20 +1,21 @@
 <h3>Alarm Views</h3>
-<p-tabMenu [model]="alarms.tabMenuItems" [activeItem]="activeItem"></p-tabMenu>
-<p-table [value]="cars">
+<p-tabMenu [model]="alarmsPayload.tabMenuItems" [activeItem]="activeItem"></p-tabMenu>
+<p-table [value]="alarmsPayload.alarms">
   <ng-template pTemplate="header">
     <tr>
-      <th>Vin</th>
-      <th>Year</th>
-      <th>Brand</th>
-      <th>Color</th>
+      <th *ngFor="let col of columns">
+        {{col.header}}
+      </th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-car>
+  <ng-template pTemplate="body" let-alarm>
     <tr>
-      <td>{{car.vin}}</td>
-      <td>{{car.year}}</td>
-      <td>{{car.brand}}</td>
-      <td>{{car.color}}</td>
+      <td>{{alarm.severity | titlecase }}</td>
+      <td>{{alarm.description}}</td>
+      <td>{{alarm.nodeType}}</td>
+      <td>{{alarm.clearable}}</td>
+      <td>{{alarm.state | titlecase}}</td>
+      <td>{{alarm.raiseTime | dateTransform}}</td>
     </tr>
   </ng-template>
 </p-table>

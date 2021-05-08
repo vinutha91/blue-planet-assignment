@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
-import { AlarmsPayload, TabMenuItem, Alarm } from '@blue-planet-assignment/api-interfaces';
+import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { AlarmsPayload, TabMenuItem, Alarm, AlarmColumn } from '@blue-planet-assignment/api-interfaces';
 import { MenuItem } from 'primeng/api'
 
 @Component({
@@ -9,45 +9,34 @@ import { MenuItem } from 'primeng/api'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DetailsPanelComponent implements OnInit {
-  @Input() alarms: { alarms: Alarm[], tabMenuItems: TabMenuItem[] };
-  activeItem: MenuItem;
-  cars = [
-    {
-      vin: 'abc',
-      year: '2001',
-      brand: 'hyundai',
-      color: 'red'
-    },
-    {
-      vin: 'abc',
-      year: '2001',
-      brand: 'hyundai',
-      color: 'red'
-    },
-    {
-      vin: 'abc',
-      year: '2001',
-      brand: 'hyundai',
-      color: 'red'
-    },
-    {
-      vin: 'abc',
-      year: '2001',
-      brand: 'hyundai',
-      color: 'red'
-    }
-  ]
+  @Input() alarmsPayload: { alarms: Alarm[], tabMenuItems: TabMenuItem[] };
+  @Input() activeItem: TabMenuItem;
+  @Output() onTabClick: EventEmitter<string> = new EventEmitter<string>();
+  columns: AlarmColumn[];
 
   constructor() { }
 
   ngOnInit(): void {
-    this.alarms.tabMenuItems.forEach((tabMenuItem: TabMenuItem) => {
-      tabMenuItem.command = this.onTabClick;
+    this.columns = this.generateTableColumns();
+    this.alarmsPayload.tabMenuItems.forEach((tabMenuItem: TabMenuItem) => {
+      tabMenuItem.command = this.getAlarmsByFilter.bind(this);
     });
-    this.activeItem = this.alarms.tabMenuItems[0];
+    this.activeItem = this.activeItem === undefined ? this.alarmsPayload.tabMenuItems[0] : this.alarmsPayload.tabMenuItems.filter((menuItem) => {
+      return menuItem.event === this.activeItem.event;
+    })[0];
   }
 
-  onTabClick(event) {
-    console.log(event);
+  getAlarmsByFilter(event): void {
+    this.onTabClick.emit(event.item);
+  }
+
+  private generateTableColumns(): AlarmColumn[] {
+    const alarm = this.alarmsPayload.alarms[0];
+    return Object.keys(alarm).map((key: string) => {
+      return {
+        field: key,
+        header: `${key.charAt(0).toUpperCase()}${key.slice(1)}`
+      };
+    })
   }
 }
