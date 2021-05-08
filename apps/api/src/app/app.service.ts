@@ -2,27 +2,57 @@ import { Injectable } from '@nestjs/common';
 import { Observable, of } from 'rxjs';
 import { ALARMS_MOCK } from './app.mock';
 import { map } from 'rxjs/operators'
-import { AlarmsPayload, TabMenuItem, Severity, Alarm, AlarmState } from '@blue-planet-assignment/api-interfaces';
+import { AlarmsPayload, TabMenuItem, Severity, Alarm, AlarmState, PieChartModel, AlarmsResponse } from '@blue-planet-assignment/api-interfaces';
 import { FILTERS } from './app.const';
 
 @Injectable()
 export class AppService {
-  getAlarms(filter: string): Observable<any> {
+  getAlarms(filter: string): Observable<AlarmsResponse> {
     return of(ALARMS_MOCK).pipe(
       map((alarmsPayload: AlarmsPayload) => {
         const tabMenuItems: TabMenuItem[] = [...this.getDefaultTabMenuItems()];
-        alarmsPayload.facets['condition-severity'].forEach((severities: Severity, i: number) => {
+        alarmsPayload.facets['condition-severity'].forEach((severity: Severity, i: number) => {
           tabMenuItems.push({
-            label: `${severities.key.charAt(0).toUpperCase()}${severities.key.slice(1).toLowerCase()}(${severities.count})`,
+            label: `${severity.key.charAt(0).toUpperCase()}${severity.key.slice(1).toLowerCase()}(${severity.count})`,
             index: i + 2,
-            event: severities.key.toUpperCase(),
+            event: severity.key.toUpperCase(),
           });
         });
-
+        let chartData: PieChartModel = {
+          labels: [],
+          datasets: [{
+            data: [],
+            backgroundColor: [],
+            hoverBackgroundColor: []
+          }]
+        };
+        chartData.labels = this.getChartLabels(alarmsPayload.facets['condition-severity']);
+        chartData.datasets[0].data = this.getChartData(alarmsPayload.facets['condition-severity']);
+        chartData.labels.forEach(() => {
+          const color = this.generateRandomColor();
+          chartData.datasets[0].backgroundColor.push(color);
+          chartData.datasets[0].hoverBackgroundColor.push(color);
+        })
         const alarms: Alarm[] = this.generateAlarms(alarmsPayload, filter);
-        return { alarms, tabMenuItems };
+        return { alarms, chartData, tabMenuItems };
       })
     );
+  }
+
+  private getChartLabels(severities: Severity[]): string[] {
+    return severities.map((severity: Severity) => {
+      return severity.key;
+    })
+  }
+
+  private getChartData(severities: Severity[]): number[] {
+    return severities.map((severity: Severity) => {
+      return severity.count;
+    })
+  }
+
+  private generateRandomColor(): string {
+    return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
   }
 
   private getDefaultTabMenuItems(): TabMenuItem[] {

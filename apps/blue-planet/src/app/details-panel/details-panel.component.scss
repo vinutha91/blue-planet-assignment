@@ -31,6 +31,12 @@ tr.critical {
     color: $primary-white;
     background-color: $alarm-severity-critical;
   }
+
+  .cell {
+    &:hover {
+      background: $alarm-severity-critical-background;
+    }
+  }
 }
 
 tr.major {
@@ -40,6 +46,12 @@ tr.major {
   &:hover {
     color: $primary-white;
     background-color: $alarm-severity-major;
+  }
+
+  .cell {
+    &:hover {
+      background: $alarm-severity-major-background;
+    }
   }
 }
 
@@ -51,6 +63,12 @@ tr.minor {
     color: $primary-white;
     background-color: $alarm-severity-minor;
   }
+
+  .cell {
+    &:hover {
+      background: $alarm-severity-minor-background;
+    }
+  }
 }
 
 tr.warning {
@@ -61,6 +79,12 @@ tr.warning {
     color: $primary-white;
     background-color: $alarm-severity-warning;
   }
+
+  .cell {
+    &:hover {
+      background: $alarm-severity-warning-background;
+    }
+  }
 }
 
 tr.undefined {
@@ -70,5 +94,11 @@ tr.undefined {
   &:hover {
     color: $primary-white;
     background-color: $alarm-severity-undefined;
+  }
+
+  .cell {
+    &:hover {
+      background: $alarm-severity-undefined-background;
+    }
   }
 }

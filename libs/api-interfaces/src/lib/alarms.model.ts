@@ -1,3 +1,6 @@
+import { PieChartModel } from "./pie-chart.model";
+import { TabMenuItem } from "./tab-menu-item.model";
+
 export interface AlarmsPayload {
     offset: number;
     limit: number;
@@ -27,4 +30,10 @@ export interface AlarmColumn {
 export enum AlarmState {
     INACTIVE = 'INACTIVE',
     ACTIVE = 'ACTIVE'
+}
+
+export interface AlarmsResponse {
+    alarms: Alarm[],
+    chartData: PieChartModel,
+    tabMenuItems: TabMenuItem[]
 }

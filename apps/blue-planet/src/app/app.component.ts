@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AppService } from './services/app.service';
-import { MenuOption, TabMenuItem, Alarm } from '@blue-planet-assignment/api-interfaces';
+import { MenuOption, TabMenuItem, Alarm, AlarmsResponse } from '@blue-planet-assignment/api-interfaces';
 import { Observable } from 'rxjs';
 import { DEFAULT_FILTER, DialogSource } from './app.const';
 import { ConfirmDialogComponent } from '@blue-planet-assignment/confirm-dialog';
@@ -12,7 +12,7 @@ import { ConfirmDialogComponent } from '@blue-planet-assignment/confirm-dialog';
 })
 export class AppComponent implements OnInit {
   menuOptions: MenuOption[];
-  alarms$: Observable<{ alarms: Alarm[], tabMenuItems: TabMenuItem[] }>
+  alarms$: Observable<AlarmsResponse>
   filter = DEFAULT_FILTER;
   activeItem: TabMenuItem;
   showPopup = false;
@@ -71,7 +71,7 @@ export class AppComponent implements OnInit {
     ]
   }
 
-  private getAlarms(filter: string): Observable<{ alarms: Alarm[], tabMenuItems: TabMenuItem[] }> {
+  private getAlarms(filter: string): Observable<AlarmsResponse> {
     const alarmFiler = filter ?? 'ALARMS'
     return this.appService.getAlarms(alarmFiler);
   }
