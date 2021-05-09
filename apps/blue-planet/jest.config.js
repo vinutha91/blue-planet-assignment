@@ -20,4 +20,6 @@ module.exports = {
     'jest-preset-angular/build/serializers/ng-snapshot',
     'jest-preset-angular/build/serializers/html-comment',
   ],
+  collectCoverage: true,
+  coverageReporters: ["json", "lcov", "html"],
 };
