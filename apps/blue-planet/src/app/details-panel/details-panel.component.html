@@ -22,7 +22,7 @@
         'warning': alarm.severity === 'WARNING' && activeItem.event !== 'WARNING', 'undefined':
         alarm.severity !== 'CRITICAL' && alarm.severity !== 'MAJOR' && alarm.severity !== 'MINOR' && alarm.severity !== 'WARNING' && 
         activeItem.event !== 'CRITICAL' && activeItem.event !== 'MAJOR' && activeItem.event !== 'MINOR' && activeItem.event !== 'WARNING'}">
-      <td class="cell">
+      <td class="cell" [pSelectableRow]="alarm">
         <p-tableCheckbox [value]="alarm" [index]="rowIndex"></p-tableCheckbox>
       </td>
       <td class="cell">{{alarm.severity | titlecase }}</td>
