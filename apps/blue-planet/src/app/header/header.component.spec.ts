@@ -36,7 +36,7 @@ describe('HeaderComponent', () => {
 
   afterEach(() => {
     jest.resetAllMocks();
-  })
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
